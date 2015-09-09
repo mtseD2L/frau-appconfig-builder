@@ -1,11 +1,12 @@
-const chai = require('chai'),
-	expect = chai.expect,
-	sinon = require('sinon');
+import chai from 'chai';
+import sinon from 'sinon'; 
+import sinonChai from 'sinon-chai';
+import {appConfigBuilder as builder} from '../lib/index';
 
 chai.should();
-chai.use(require('sinon-chai'));
+chai.use(sinonChai);
 
-const builder = require('../lib/index').appConfigBuilder;
+const expect = chai.expect;
 
 const SIMPLE_PARAMETERS = ['version', 'id', 'description'];
 const LOADER = 'test';

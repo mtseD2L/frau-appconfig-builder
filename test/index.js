@@ -1,7 +1,7 @@
-const chai = require('chai'),
-	expect = chai.expect;
-
+import chai from 'chai';
 import {appConfigBuilder} from '../lib/index';
+
+const expect = chai.expect;
 
 describe('index', () => {
 

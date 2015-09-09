@@ -1,11 +1,12 @@
-const chai = require('chai'),
-	expect = chai.expect,
-	sinon = require('sinon');
+import chai from 'chai';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+import builder from '../lib/htmlAppConfigBuilder';
 
 chai.should();
-chai.use(require('sinon-chai'));
+chai.use(sinonChai);
 
-const builder = require('../lib/htmlAppConfigBuilder');
+const expect = chai.expect;
 
 const OPTS = createValidOpts();
 
