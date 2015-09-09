@@ -21,7 +21,7 @@ describe('appConfigBuilder', () => {
 
 		it('should accept null options', () => {
 
-			let spy = sinon.stub(require('../lib/packageJson'), 'read')
+			const spy = sinon.stub(require('../lib/packageJson'), 'read')
 				.returns({
 					version: '1.0.0.1',
 					description: 'It is a small world',
@@ -120,7 +120,7 @@ describe('appConfigBuilder', () => {
 						VALUES[param].forEach((value) => {
 
 							it(value, () => {
-								let opts = createValidOptsWithout(param);
+								const opts = createValidOptsWithout(param);
 								opts[param] = value;
 
 								builder.build(opts, LOADER).metadata
@@ -149,7 +149,7 @@ describe('appConfigBuilder', () => {
 						VALUES[param].forEach( (value) => {
 
 							it(value, () => {
-								let opts = createValidOptsWithout(param);
+								const opts = createValidOptsWithout(param);
 								opts[param] = value;
 
 								expect( () => {

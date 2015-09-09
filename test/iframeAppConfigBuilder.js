@@ -39,7 +39,7 @@ describe('iframeAppConfigBuilder', () => {
 		});
 
 		it('should create "loader" with schema and endpoint', () => {
-			let val = builder.build(TARGET, OPTS);
+			const val = builder.build(TARGET, OPTS);
 			val.should.have.property('loader');
 			val.loader.should.have.property('schema', 'http://apps.d2l.com/uiapps/iframeschema/v1.json' );
 			val.loader.should.have.property('endpoint', TARGET );
@@ -50,7 +50,7 @@ describe('iframeAppConfigBuilder', () => {
 	describe('buildStream', () => {
 
 		it('should return a stream', () => {
-			let val = builder.buildStream(TARGET, OPTS);
+			const val = builder.buildStream(TARGET, OPTS);
 			val.should.instanceOf(stream.Stream);
 		});
 

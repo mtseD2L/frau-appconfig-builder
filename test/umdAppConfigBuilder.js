@@ -20,7 +20,7 @@ describe('umdAppConfigBuilder', () => {
 
 		it('should pass opts', () => {
 
-			let coreBuilder = sinon.spy(require('../lib/appConfigBuilder'), 'build');
+			const coreBuilder = sinon.spy(require('../lib/appConfigBuilder'), 'build');
 
 			builder.build(TARGET, OPTS);
 

@@ -46,7 +46,7 @@ describe('htmlAppConfigBuilder', () => {
 				});
 
 				it('defaultResource', () => {
-					let opts = createValidOptsWithout('defaultResource');
+					const opts = createValidOptsWithout('defaultResource');
 
 					builder.build(opts).loader
 						.should.have.property('defaultResource', DEFAULT_RESOURCE);
@@ -63,7 +63,7 @@ describe('htmlAppConfigBuilder', () => {
 				['defaultResource', 'additionalResources' ].forEach((arg) => {
 					it(arg, () => {
 						const VALUE = 'some-value';
-						let opts = createValidOpts();
+						const opts = createValidOpts();
 						opts[arg] = VALUE;
 
 						builder.build(opts).loader.should.have.property(arg, VALUE);
