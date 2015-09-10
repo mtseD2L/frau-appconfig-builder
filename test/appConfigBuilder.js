@@ -1,7 +1,7 @@
 import chai from 'chai';
 import sinon from 'sinon'; 
 import sinonChai from 'sinon-chai';
-import {appConfigBuilder as builder} from '../lib/index';
+import builder from '../lib/appConfigBuilder';
 
 chai.should();
 chai.use(sinonChai);

@@ -1,0 +1,69 @@
+#! /usr/bin/env node
+
+var chalk = require('chalk'),
+	argv = require('yargs'),
+	vfs = require('vinyl-fs');
+
+argv = argv.usage('Usage: frau-appconfig-builder [--appfile|-f] [--dist|-d] [--loader|l]')
+	.example('frau-appconfig-builder -d dist')
+	.alias('d', 'dist')
+	.alias('f', 'appfile')
+	.alias('l', 'loader')
+	.alias('e', 'envvar')
+	.argv;
+
+var opts = {
+	appFile: (argv.appfile || process.env.npm_package_config_frauAppConfigBuilder_appFile),
+	envVar: (argv.envvar || process.env.npm_package_config_frauAppConfigBuilder_envVar),
+	dist: (argv.dist || process.env.npm_package_config_frauAppConfigBuilder_dist),
+	loader: (argv.loader || process.env.npm_package_config_frauAppConfigBuilder_loader)
+};
+
+if (!opts.appFile) {
+	console.log(chalk.red('Target appFile not specified.'));
+	process.exit(1);
+}
+
+if (!opts.dist) {
+	console.log(chalk.red('Output dist location not specified.'));
+	process.exit(1);
+}
+
+var target;
+
+if (opts.envVar && process.env[opts.envVar]) {
+
+	var publisher = require('gulp-frau-publisher');
+
+	var publisherOpts = publisher.optionsProvider.getOptions(argv);
+	target = publisher.app(publisherOpts)
+		.getLocation() + opts.appFile;
+
+} else {
+
+	var localAppResolver = require('frau-local-appresolver');
+
+	var localAppResolverOpts = localAppResolver.optionsProvider.getOptions(argv);
+	target = localAppResolver.resolver(localAppResolverOpts.appClass, localAppResolverOpts)
+		.getUrl() + opts.appFile;
+
+}
+
+var appConfigBuilder = require('../lib/index');
+
+if (opts.loader === 'umd') {
+	appConfigBuilder = appConfigBuilder.umd;
+} else if (opts.loader === 'iframe') {
+	appConfigBuilder = appConfigBuilder.iframe;
+} else if (opts.loader === 'html') {
+	appConfigBuilder = appConfigBuilder.html;
+} else {
+	console.log(chalk.green('Creating appconfig.json:\n'));
+	console.log(chalk.grey('   No loader specified. Creating appconfig for default loader (' + appConfigBuilder.name + ').\n'));
+}
+
+appConfigBuilder.buildStream(target)
+	.pipe(vfs.dest(opts.dist))
+	.on('end', function() {
+		console.log('appconfig.json created!');
+	});

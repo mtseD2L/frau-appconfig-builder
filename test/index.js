@@ -1,5 +1,5 @@
 import chai from 'chai';
-import {appConfigBuilder} from '../lib/index';
+import appConfigBuilder from '../lib/index';
 
 const expect = chai.expect;
 
