@@ -1,3 +1,13 @@
 language: node_js
 node_js:
 - '0.12'
+after_success: npm run report-coverage
+deploy:
+  provider: npm
+  email: d2ltravisdeploy@d2l.com
+  api_key:
+    secure: e1fe4Ek7Lwdq6hD8C9fMLabRAdCwk4FrVMbHZkgozeqG/ZFcRS36AtF3y1ygkOckGufl9IilI8YysWCC4I2+Dhka5XztqMCfGTLBqMdk3a8We/P6E9sZJVzb6MlDjCz0i/1NmpHnjpRMutlx8g1HQefE/KSivfP8TV7qzbif405MZ/h8NsxIbTbfO4CHnmmn4SswjhPjiY9nkLbIWc3Ymyv18O4sPn2xrCOxNeRhjxs8l41aqZilHp4Xr8O6cCS5WDcf4BOQDu19MgdJOn45laK2rTKlvr+oNye3y6yCxN97VI0DnaAAHrmA3Ff6xCLAv10tPMHzxLPLoanXIDcUMaNwxoMAne+cTyHAC6Uqtnzkg6OLvwRD5yCjjg18eZ/k89PE96lG7FNaFTqkqwXPpSVn9nuPkaxICIYnVaqHloqyoq2lFWLsnieFPY6WGqft5WxPOqzAdJdKCNWKYHtIurblWikDkZYVAbZhqiU2wsvjb5OnQNyrlzKNALE1uC0vwdPCGDHQkMOz1C16MFb5Odqt/y3d2eZmACpUtvkjlz9s3hoXBP/J0qI5l2dSAuI0AXUoLPaqUN22R6jokSU8CDMQK4AjZ1Gh70wjqzTsy24DaS3AVNnmeE9UiLOzTTtts/Rtmfo7QbsoDQd+A0fYWs5W9LfVYfIg/N046JHPZ/o=
+  on:
+    tags: true
+    all_branches: true
+    repo: Brightspace/frau-appconfig-builder
