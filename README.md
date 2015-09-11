@@ -32,7 +32,7 @@ frau-appconfig-builder --dist|-d ./dist
                        + publisher options
 ```
 
-In the above example, the CLI utility will use the `envVar` to determine whether to use [frau-local-appresolver](https://github.com/Brightspace/frau-local-appresolver/blob/master/README.md) or [frau-publisher](https://github.com/Brightspace/gulp-frau-publisher/blob/master/README.md) to determine the app end-point.  Therefore, the configuration for these CLI utilities are also necessary.
+In the above example, the CLI utility will use the `envVar` to determine whether to use [frau-local-appresolver](https://github.com/Brightspace/frau-local-appresolver/blob/master/README.md) or [frau-publisher](https://github.com/Brightspace/gulp-frau-publisher/blob/master/README.md) to determine the app end-point.  Therefore, the configurations for these CLI utilities are also necessary.
 
 Since this utility, as well as the [frau-local-appresolver](https://github.com/Brightspace/frau-local-appresolver/blob/master/README.md) and [frau-publisher](https://github.com/Brightspace/gulp-frau-publisher/blob/master/README.md) utilities are typically used together for a FRA, it is much clearer to simply configure these options in `package.json`:
 
