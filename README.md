@@ -85,11 +85,6 @@ builder.buildStream(target)
 
 **Parameters**:
 
-    "appFile": "app.js",
-    "dist": "./dist",
-    "envVar": "TRAVIS",
-    "loader": "umd"
-
 - `appFile` (required) - The name of the app end-point file (ex. app.js)
 - `dist` (required) - The directory where the `appconfig.json` file should be saved
 - `envVar` (optional) - The environment variable for checking to determine the build environment (local vs. remote), necessary to resolve app end-point
