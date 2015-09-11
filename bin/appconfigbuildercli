@@ -4,19 +4,21 @@ var chalk = require('chalk'),
 	argv = require('yargs'),
 	vfs = require('vinyl-fs');
 
-argv = argv.usage('Usage: frau-appconfig-builder [--appfile|-f] [--dist|-d] [--loader|l]')
+argv = argv.usage('Usage: frau-appconfig-builder [--appfile|-f] [--dist|-d] [--loader|l] [--showloading|-s]')
 	.example('frau-appconfig-builder -d dist')
 	.alias('d', 'dist')
 	.alias('f', 'appfile')
 	.alias('l', 'loader')
 	.alias('e', 'envvar')
+	.alias('s', 'showloading')
 	.argv;
 
 var opts = {
 	appFile: (argv.appfile || process.env.npm_package_config_frauAppConfigBuilder_appFile),
 	envVar: (argv.envvar || process.env.npm_package_config_frauAppConfigBuilder_envVar),
 	dist: (argv.dist || process.env.npm_package_config_frauAppConfigBuilder_dist),
-	loader: (argv.loader || process.env.npm_package_config_frauAppConfigBuilder_loader)
+	loader: (argv.loader || process.env.npm_package_config_frauAppConfigBuilder_loader),
+	showLoading: ( (argv.showloading || process.env.npm_package_config_frauAppConfigBuilder_showLoading === 'true') ? true : false)
 };
 
 if (!opts.appFile) {
@@ -62,8 +64,9 @@ if (opts.loader === 'umd') {
 	console.log(chalk.grey('   No loader specified. Creating appconfig for default loader (' + appConfigBuilder.name + ').\n'));
 }
 
-appConfigBuilder.buildStream(target)
+appConfigBuilder.buildStream(target, opts)
 	.pipe(vfs.dest(opts.dist))
 	.on('end', function() {
-		console.log('appconfig.json created!');
+		console.log(chalk.grey('   Loader: ' + appConfigBuilder.name));
+		console.log(chalk.grey('   End-pooint: ' + target + '\n'));
 	});
