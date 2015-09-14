@@ -1,6 +1,6 @@
 {
   "name": "frau-appconfig-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A free-range-app utility for building your FRA's appconfig.json.",
   "main": "lib/index.js",
   "bin": {
@@ -32,7 +32,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "frau-local-appresolver": "^0.2.0",
-    "gulp-frau-publisher": "^2.5.0",
+    "frau-publisher": "^2.5.1",
     "q": "^1.4.1",
     "streamifier": "^0.1.0",
     "vinyl-fs": "^1.0.0",
