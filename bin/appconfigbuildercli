@@ -35,7 +35,7 @@ var target;
 
 if (opts.envVar && process.env[opts.envVar]) {
 
-	var publisher = require('gulp-frau-publisher');
+	var publisher = require('frau-publisher');
 
 	var publisherOpts = publisher.optionsProvider.getOptions(argv);
 	target = publisher.app(publisherOpts)
