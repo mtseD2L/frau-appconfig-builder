@@ -11,7 +11,7 @@ const expect = chai.expect;
 
 const TARGET = 'example.com/path/app.js';
 const OPTS = {
-	version: '1.0.0.1',
+	version: '1.0.0-alpha.1',
 	description: 'It is a small world',
 	id: 'urn:d2l:fra:id:some-id'
 };

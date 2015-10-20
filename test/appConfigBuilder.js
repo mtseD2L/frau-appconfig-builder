@@ -24,7 +24,7 @@ describe('appConfigBuilder', () => {
 
 			const spy = sinon.stub(require('../lib/packageJson'), 'read')
 				.returns({
-					version: '1.0.0.1',
+					version: '1.0.0-alpha.1',
 					description: 'It is a small world',
 					appId: 'urn:d2l:fra:id:some-id'
 				});
@@ -60,7 +60,7 @@ describe('appConfigBuilder', () => {
 
 			describe('defaults', () => {
 
-				const VERSION = '1.0.0.1',
+				const VERSION = '1.0.0-alpha.1',
 					DESCRIPTION = 'It is a small world',
 					ID = 'urn:d2l:fra:id:some-id';
 
@@ -107,7 +107,7 @@ describe('appConfigBuilder', () => {
 						'urn:d2l:fra:id:some-id', 
 						'urn:d2l:fra:id:some.id' 
 					],
-					version: [ '0.0.0.0', '1.0.0' ],
+					version: [ '0.0.0', '1.0.0-alpha.1' ],
 					description: [
 						'A simple description.', 
 						longString(1024) 
@@ -139,7 +139,7 @@ describe('appConfigBuilder', () => {
 
 				const VALUES = {
 					id: [ '....', '----', 'some--name', 'urn', 'urn:', 'urn:d2l:fra:id:some/id', 'urn:d2l:fra:id:some-id2' ],
-					version: [ '....', '1.0-something', '1.0.0.0.1', '1.0' ],
+					version: [ '....', '1.0-something', '1.0.0.1', '1.0', '1' ],
 					description: [ longString(1025) ],
 				};
 
@@ -203,7 +203,7 @@ describe('appConfigBuilder', () => {
 
 function createValidOpts() {
 	return {
-		version: '1.0.0.1',
+		version: '1.0.0-alpha.1',
 		description: 'It is a small world',
 		id: 'urn:d2l:fra:id:some-id',
 		loader: 'test'
