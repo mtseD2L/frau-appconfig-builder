@@ -65,7 +65,7 @@ describe('umdAppConfigBuilder', () => {
 
 function createValidOpts() {
 	return {
-		version: '1.0.0.1',
+		version: '1.0.0-alpha.1',
 		description: 'It is a small world',
 		id: 'urn:d2l:fra:id:some-id',
 		showLoading: true
